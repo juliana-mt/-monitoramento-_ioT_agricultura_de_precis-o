@@ -28,3 +28,9 @@ on conflict (id) do nothing;
 -- Segurança: ativa RLS (Row Level Security)
 alter table devices  enable row level security;
 alter table readings enable row level security;
+
+-- Permissões para a Edge Function (service_role)
+grant usage on schema public to service_role;
+grant select, insert, update, delete on table public.devices  to service_role;
+grant select, insert, update, delete on table public.readings to service_role;
+grant usage, select on all sequences in schema public to service_role;
