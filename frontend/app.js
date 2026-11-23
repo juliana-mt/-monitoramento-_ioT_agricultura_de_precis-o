@@ -45,6 +45,33 @@ function atualizaCartao(leitura) {
   }
 }
 
+function atualizaGrafico(historico) {
+  const dados = [...historico].reverse(); // do mais antigo para o mais novo
+  const labels = dados.map((d) => formataHora(d.created_at));
+  const valores = dados.map((d) => Number(d.value));
+
+  if (!grafico) {
+    grafico = new Chart(el("grafico"), {
+      type: "line",
+      data: { labels, datasets: [{ label: "Umidade (%)", data: valores, borderColor: "#2e9e4f", tension: 0.2 }] },
+      options: { animation: false, scales: { y: { min: 0, max: 100 } } },
+    });
+  } else {
+    grafico.data.labels = labels;
+    grafico.data.datasets[0].data = valores;
+    grafico.update();
+  }
+}
+
+function atualizaTabela(historico) {
+  el("tabela").innerHTML = historico.slice(0, 20).map((d) => `
+    <tr>
+      <td>${new Date(d.created_at).toLocaleString("pt-BR")}</td>
+      <td>${Number(d.value).toFixed(1)} ${d.unit}</td>
+      <td class="${d.alert ? "tag-alerta" : "tag-ok"}">${d.alert ? "Solo seco" : "Ok"}</td>
+    </tr>`).join("");
+}
+
 async function atualiza() {
   try {
     const q = `device_id=${DEVICE}&metric=${METRIC}`;
@@ -53,6 +80,8 @@ async function atualiza() {
       consulta(`history?${q}&limit=50`),
     ]);
     atualizaCartao(ultima);
+    atualizaGrafico(historico);
+    atualizaTabela(historico);
   } catch (e) {
     el("status").textContent = "Erro ao consultar a API";
     console.error(e);

@@ -16,3 +16,12 @@ h1 { margin: 0; }
 .status { font-size: 22px; margin-top: 10px; font-weight: 600; }
 .info { margin-top: 8px; opacity: .9; }
 .aviso { margin-top: 14px; background: rgba(0,0,0,.2); padding: 10px; border-radius: 8px; }
+
+/* Blocos de histórico e tabela */
+.bloco { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.bloco h2 { margin: 0 0 12px; font-size: 18px; }
+.tabela-wrap { max-height: 260px; overflow-y: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid #e5e9e5; }
+.tag-alerta { color: #d93a3a; font-weight: 600; }
+.tag-ok { color: #2e9e4f; font-weight: 600; }

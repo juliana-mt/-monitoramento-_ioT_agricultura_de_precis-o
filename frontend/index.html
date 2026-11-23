@@ -24,6 +24,22 @@
         Sem dados recentes. O sensor pode estar desligado ou sem conexão.
       </div>
     </section>
+    
+    <section class="bloco">
+      <h2>Histórico</h2>
+      <canvas id="grafico" height="120"></canvas>
+    </section>
+
+    <section class="bloco">
+      <h2>Últimas leituras</h2>
+      <div class="tabela-wrap">
+        <table>
+          <thead><tr><th>Horário</th><th>Umidade</th><th>Situação</th></tr></thead>
+          <tbody id="tabela"></tbody>
+        </table>
+      </div>
+    </section>
+
   </main>
   <script src="app.js"></script>
 </body>
