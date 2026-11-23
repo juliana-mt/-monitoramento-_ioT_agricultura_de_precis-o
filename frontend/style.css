@@ -1,1 +1,18 @@
-/* adicionar o estilo */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #f2f5f2; color: #1f2d1f; }
+main { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+h1 { margin: 0; }
+.sub { color: #5b6b5b; margin-top: 4px; }
+
+/* Cartão principal */
+.card { border-radius: 16px; padding: 28px; text-align: center; color: #fff; margin: 20px 0; transition: background .3s; }
+.card.ok { background: #2e9e4f; }
+.card.alerta { background: #d93a3a; }
+.card.desatualizado { background: #d9a21b; }
+.card.sem-dados { background: #7a857a; }
+
+.valor { font-size: 72px; font-weight: 700; line-height: 1; }
+#unidade { font-size: 32px; margin-left: 4px; }
+.status { font-size: 22px; margin-top: 10px; font-weight: 600; }
+.info { margin-top: 8px; opacity: .9; }
+.aviso { margin-top: 14px; background: rgba(0,0,0,.2); padding: 10px; border-radius: 8px; }
